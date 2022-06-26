@@ -22,5 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'Api\UserController@login');
 Route::post('register', 'Api\UserController@register');
 Route::get('ticket', 'Api\TicketController@index');
+Route::get('transaksi/{user_id}', 'Api\TransaksiController@index');
+Route::get('transaksi/detail/{transaksi_id}', 'Api\TransaksiController@show');
 Route::post('checkout', 'Api\TransaksiController@store');
+Route::post('transaksi/bukti-transfer', 'Api\TransaksiController@uploadBuktiTransfer');
 

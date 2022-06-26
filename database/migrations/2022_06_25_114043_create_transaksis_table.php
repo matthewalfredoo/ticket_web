@@ -19,16 +19,16 @@ class CreateTransaksisTable extends Migration
             $table->string('kode_payment');
             $table->string('kode_trx');
             $table->integer('total_item')->unsigned();
-            $table->bigInteger('total_harga')->unsigned();
+            $table->bigInteger('total_harga')->unsigned()->nullable();
             $table->integer('kode_unik')->unsigned();
             $table->string('status')->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->date('detail_tanggal')->nullable();//lokasi kian
             $table->string('deskripsi')->nullable();
-            $table->string('metode')->nullable();
-            $table->bigInteger('total_transfer')->unsigned();
-            $table->string('bank');
+            $table->string('bukti_transfer')->nullable();
+            $table->bigInteger('total_transfer')->unsigned()->nullable();
+            $table->string('bank')->nullable();
             $table->timestamp('expired_at')->nullable();
             $table->timestamps();
         });

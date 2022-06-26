@@ -36,7 +36,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -68,8 +68,9 @@ class TransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaksi $transaksi)
+    public function update(Request $request, int $id)
     {
+        $transaksi = Transaksi::find($id);
         $transaksi->status = $request->status;
         $transaksi->update();
         return redirect()->route('transaksi.index');

@@ -52,15 +52,15 @@
                                         <td>{{ $data->user_id }}</td>
                                         <td>{{ $data->jumlah }}</td>
                                         <td>{{ "Rp. ".number_format($data->harga)}}</td>
-                                        <td>{{ $data->tanggal }}</td>
+                                        <td>{{ $data->updated_at }}</td>
                                         <td>
-                                            <a href="{{ asset('storage/bukti_transfer/'.$data->bukti_transfer) }}"
+                                            <a href="{{ $data->bukti_transfer }}"
                                                 target="_blank">
-                                                <img src="{{ asset('storage/bukti_transfer/'.$data->bukti_transfer) }}"
+                                                <img src="{{ $data->bukti_transfer }}"
                                                     alt="{{ $data->bukti_transfer }}" width="100px">
                                             </a>
                                         </td>
-                                        <td>{{ $data->updated_at }}</td>
+                                        <td>{{ $data->status }}</td>
 
                                         <td>
                                             <form method="POST" action="{{ route('transaksi.update', $data->id) }}">
@@ -68,10 +68,11 @@
                                                 <select class="form-select form-select-sm" name="status"
                                                         onchange='if(this.value != 0) { this.form.submit(); }'>
                                                     <option value='0' disabled selected>Status</option>
-                                                    <option value='Menunggu'>Menunggu Konfirmasi</option>
-                                                    <option value='Berhasil'>Berhasil</option>
-                                                    <option value='Ditolak'>Ditolak</option>
+                                                    <option value='MENUNGGU KONFIRMASI'>Menunggu Konfirmasi</option>
+                                                    <option value='BERHASIL'>Berhasil</option>
+                                                    <option value='DITOLAK'>Ditolak</option>
                                                 </select>
+                                                <input type="hidden" name="_method" value="put">
                                             </form>
                                         </td>
                                 @endforeach

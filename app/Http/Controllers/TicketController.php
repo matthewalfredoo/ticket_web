@@ -39,14 +39,15 @@ class TicketController extends Controller
         // dd($request->all());die();
 
         $fileName = '';
-        if($request->image->getClientOriginalName()){
-            $file = str_replace(' ', '', $request->image->getClientOriginalName());
-            $fileName = date('mYdHs').rand(1,999).' '.$file;
-            $request->image->storeAs('public/ticket',$fileName);
+        if($request->image){
+            $file = $request->image;
+            $fileNameClient = str_replace(' ', '', $request->image->getClientOriginalName());
+            $fileName = date('mYdHs').rand(1,999).'-'.$fileNameClient;
+            $file->move('tickets', $fileName);
         }
 
         $ticket = Ticket::create(array_merge($request->all(), [
-            'image' => $fileName
+            'image' => ('tickets/'.$fileName),
         ]));
         return redirect('ticket');
     }

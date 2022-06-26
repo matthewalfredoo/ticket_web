@@ -15,8 +15,13 @@ class CreateTransaksiDetailsTable extends Migration
     {
         Schema::create('transaksi_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transaksi_id')->unsigned();
-            $table->integer('produk_id')->unsigned();
+
+            $table->unsignedBigInteger('transaksi_id');
+            $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
+
+            $table->unsignedBigInteger('produk_id');
+            $table->foreign('produk_id')->references('id')->on('tickets')->onDelete('cascade');
+
             $table->integer('total_item')->unsigned();
             $table->text('catatan')->nullable();
             $table->integer('total_harga')->unsigned()->nullable();

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    protected $filable = [
+    protected $fillable = [
         'user_id', 'kode_payment', 'kode_trx', 'total_item', 'total_harga', 'kode_unik',
         'status', 'name', 'phone', 'detail_tanggal', 'deskripsi', 'metode', 'total_transfer',
         'bank', 'expired_at'
