@@ -112,6 +112,15 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('transaksi.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-ticket"></i>
+                                <p>
+                                    Orderan Masuk
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cogs"></i>

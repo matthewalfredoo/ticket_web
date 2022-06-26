@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController');
 Route::resource('/ticket', 'TicketController');
+Route::resource('/transaksi', 'TransaksiController');
