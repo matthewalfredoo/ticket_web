@@ -15,21 +15,13 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('kode_payment');
-            $table->string('kode_trx');
-            $table->integer('total_item')->unsigned();
-            $table->bigInteger('total_harga')->unsigned();
-            $table->integer('kode_unik')->unsigned();
-            $table->string('status')->nullable();
-            $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->date('detail_tanggal')->nullable();//lokasi kian
-            $table->string('deskripsi')->nullable();
-            $table->string('metode')->nullable();
-            $table->bigInteger('total_transfer')->unsigned();
-            $table->string('bank');
-            $table->timestamp('expired_at')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('jumlah');
+            $table->string('harga');
+            $table->date('tanggal');
+            $table->string('bukti_transfer');
+            $table->string('status');
             $table->timestamps();
         });
     }
