@@ -65,7 +65,6 @@ class TransaksiController extends Controller
             'expired_at' => $expired_at,
         ]);
 
-        DB::beginTransaction();
         $transaksi = Transaksi::create($dataTransaksi);
 
         $ticketArr = [];
@@ -89,15 +88,15 @@ class TransaksiController extends Controller
         $transaksi->total_harga = $totalHargaTransaksi;
         $transaksi->save();
 
+        $totalHargaTransaksi = 0;
+
         if (!empty($transaksi) && !empty($transaksiDetail)) {
-            DB::commit();
             return response()->json([
                 'success' => 1,
                 'message' => 'Transaksi Berhasil',
                 'transaksi' => collect($transaksi)
             ]);
         } else {
-            DB::rollback();
             $this->error('Transaksi Gagal');
         }
     }
